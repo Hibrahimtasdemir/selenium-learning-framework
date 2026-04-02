@@ -7,17 +7,20 @@ import pages.ShadowDomPage;
 
 public class ShadowDomTest extends BaseTest {
 
-    @Test(groups = {"regression"})
-    public void shouldReadTextFromShadowDom() {
-        ShadowDomPage shadowDomPage = new ShadowDomPage(driver);
+  @Test(groups = {"regression"})
+  public void shouldReadTextFromShadowDom() {
+    ShadowDomPage shadowDomPage = new ShadowDomPage(driver);
 
-        shadowDomPage.open();
+    shadowDomPage.open();
 
-        Assert.assertEquals(shadowDomPage.getParagraphHostCount(), 2,
-                "Unexpected number of shadow hosts.");
-        Assert.assertEquals(shadowDomPage.getShadowParagraphText(1), "Let's have some different text!",
-                "Unexpected text in first shadow paragraph.");
-        Assert.assertTrue(shadowDomPage.getShadowParagraphText(2).contains("In a list!"),
-                "Second shadow paragraph should include slotted list text.");
-    }
+    Assert.assertEquals(
+        shadowDomPage.getParagraphHostCount(), 2, "Unexpected number of shadow hosts.");
+    Assert.assertEquals(
+        shadowDomPage.getShadowParagraphText(1),
+        "Let's have some different text!",
+        "Unexpected text in first shadow paragraph.");
+    Assert.assertTrue(
+        shadowDomPage.getShadowParagraphText(2).contains("In a list!"),
+        "Second shadow paragraph should include slotted list text.");
+  }
 }

@@ -7,20 +7,16 @@ import pages.NotificationMessagePage;
 
 public class NotificationMessageTest extends BaseTest {
 
-    @Test(groups = {"regression"})
-    public void shouldDisplayOneOfExpectedNotificationMessages() {
-        NotificationMessagePage notificationMessagePage = new NotificationMessagePage(driver);
+  @Test(groups = {"regression"})
+  public void shouldDisplayOneOfExpectedNotificationMessages() {
+    NotificationMessagePage notificationMessagePage = new NotificationMessagePage(driver);
 
-        notificationMessagePage.open();
-        notificationMessagePage.clickHere();
+    notificationMessagePage.open();
+    notificationMessagePage.clickHere();
 
-        Assert.assertTrue(
-                notificationMessagePage.isNotificationOneOf(
-                        "Action successful",
-                        "Action unsuccesful, please try again",
-                        "Action unsuccesful"
-                ),
-                "Unexpected notification message: " + notificationMessagePage.getNotificationMessage()
-        );
-    }
+    Assert.assertTrue(
+        notificationMessagePage.isNotificationOneOf(
+            "Action successful", "Action unsuccesful, please try again", "Action unsuccesful"),
+        "Unexpected notification message: " + notificationMessagePage.getNotificationMessage());
+  }
 }

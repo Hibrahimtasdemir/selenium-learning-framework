@@ -7,13 +7,13 @@ import pages.HomePage;
 
 public class FirstTest extends BaseTest {
 
-    @Test(groups = {"smoke", "regression"})
-    public void openWebsiteAndVerifyTitle() {
-        HomePage homePage = new HomePage(driver);
-        String expectedTitle = "The Internet";
+  @Test(groups = {"smoke", "regression"})
+  public void openWebsiteAndVerifyTitle() {
+    HomePage homePage = new HomePage(driver);
+    String expectedTitle = "The Internet";
 
-        homePage.open();
+    homePage.open();
 
-        Assert.assertEquals(homePage.getPageTitle(), expectedTitle);
-    }
+    Assert.assertEquals(homePage.getPageTitle(), expectedTitle);
+  }
 }

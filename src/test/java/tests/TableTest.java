@@ -7,16 +7,20 @@ import pages.TablePage;
 
 public class TableTest extends BaseTest {
 
-    @Test(groups = {"regression"})
-    public void shouldReadDataFromTable() {
-        TablePage tablePage = new TablePage(driver);
+  @Test(groups = {"regression"})
+  public void shouldReadDataFromTable() {
+    TablePage tablePage = new TablePage(driver);
 
-        tablePage.open();
+    tablePage.open();
 
-        Assert.assertEquals(tablePage.getRowCount(), 4, "Unexpected row count in table.");
-        Assert.assertEquals(tablePage.getEmailByLastName("Doe"), "jdoe@hotmail.com",
-                "Email for Doe row is not correct.");
-        Assert.assertEquals(tablePage.getDueAmountByLastName("Smith"), "$50.00",
-                "Due amount for Smith row is not correct.");
-    }
+    Assert.assertEquals(tablePage.getRowCount(), 4, "Unexpected row count in table.");
+    Assert.assertEquals(
+        tablePage.getEmailByLastName("Doe"),
+        "jdoe@hotmail.com",
+        "Email for Doe row is not correct.");
+    Assert.assertEquals(
+        tablePage.getDueAmountByLastName("Smith"),
+        "$50.00",
+        "Due amount for Smith row is not correct.");
+  }
 }

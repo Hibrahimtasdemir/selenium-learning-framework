@@ -7,22 +7,23 @@ import org.openqa.selenium.WebElement;
 
 public class DragAndDropPage extends BasePage {
 
-    private final By columnA = By.id("column-a");
-    private final By columnB = By.id("column-b");
+  private final By columnA = By.id("column-a");
+  private final By columnB = By.id("column-b");
 
-    public DragAndDropPage(WebDriver driver) {
-        super(driver);
-    }
+  public DragAndDropPage(WebDriver driver) {
+    super(driver);
+  }
 
-    public void open() {
-        openPath("/drag_and_drop");
-    }
+  public void open() {
+    openPath("/drag_and_drop");
+  }
 
-    public void dragColumnAToColumnB() {
-        WebElement source = find(columnA);
-        WebElement target = find(columnB);
+  public void dragColumnAToColumnB() {
+    WebElement source = find(columnA);
+    WebElement target = find(columnB);
 
-        String script = """
+    String script =
+        """
                 function createCustomEvent(type) {
                     var event = new CustomEvent(type, {bubbles: true, cancelable: true});
                     event.dataTransfer = {
@@ -54,17 +55,17 @@ public class DragAndDropPage extends BasePage {
                 simulateDragAndDrop(arguments[0], arguments[1]);
                 """;
 
-        ((JavascriptExecutor) driver).executeScript(script, source, target);
-        pauseForDemo();
-        waitUtils.waitForTextToBe(columnA, "B");
-        waitUtils.waitForTextToBe(columnB, "A");
-    }
+    ((JavascriptExecutor) driver).executeScript(script, source, target);
+    pauseForDemo();
+    waitUtils.waitForTextToBe(columnA, "B");
+    waitUtils.waitForTextToBe(columnB, "A");
+  }
 
-    public String getColumnAText() {
-        return getText(columnA);
-    }
+  public String getColumnAText() {
+    return getText(columnA);
+  }
 
-    public String getColumnBText() {
-        return getText(columnB);
-    }
+  public String getColumnBText() {
+    return getText(columnB);
+  }
 }

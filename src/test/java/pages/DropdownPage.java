@@ -6,28 +6,28 @@ import org.openqa.selenium.support.ui.Select;
 
 public class DropdownPage extends BasePage {
 
-    private final By dropdown = By.id("dropdown");
+  private final By dropdown = By.id("dropdown");
 
-    public DropdownPage(WebDriver driver) {
-        super(driver);
-    }
+  public DropdownPage(WebDriver driver) {
+    super(driver);
+  }
 
-    public void open() {
-        openPath("/dropdown");
-    }
+  public void open() {
+    openPath("/dropdown");
+  }
 
-    public void selectByVisibleText(String text) {
-        Select select = new Select(find(dropdown));
-        select.selectByVisibleText(text);
-    }
+  public void selectByVisibleText(String text) {
+    Select select = new Select(find(dropdown));
+    select.selectByVisibleText(text);
+  }
 
-    public void selectByValue(String value) {
-        Select select = new Select(find(dropdown));
-        select.selectByValue(value);
-    }
+  public void selectByValue(String value) {
+    Select select = new Select(find(dropdown));
+    select.selectByValue(value);
+  }
 
-    public String getSelectedOptionText() {
-        Select select = new Select(find(dropdown));
-        return select.getFirstSelectedOption().getText();
-    }
+  public String getSelectedOptionText() {
+    Select select = new Select(find(dropdown));
+    return select.getFirstSelectedOption().getText();
+  }
 }

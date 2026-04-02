@@ -7,16 +7,18 @@ import pages.ContextMenuPage;
 
 public class ContextMenuTest extends BaseTest {
 
-    @Test(groups = {"regression"})
-    public void shouldShowAlertAfterRightClick() {
-        ContextMenuPage contextMenuPage = new ContextMenuPage(driver);
+  @Test(groups = {"regression"})
+  public void shouldShowAlertAfterRightClick() {
+    ContextMenuPage contextMenuPage = new ContextMenuPage(driver);
 
-        contextMenuPage.open();
-        contextMenuPage.rightClickHotSpot();
+    contextMenuPage.open();
+    contextMenuPage.rightClickHotSpot();
 
-        Assert.assertEquals(contextMenuPage.getAlertText(), "You selected a context menu",
-                "Unexpected context menu alert text.");
+    Assert.assertEquals(
+        contextMenuPage.getAlertText(),
+        "You selected a context menu",
+        "Unexpected context menu alert text.");
 
-        contextMenuPage.acceptAlert();
-    }
+    contextMenuPage.acceptAlert();
+  }
 }

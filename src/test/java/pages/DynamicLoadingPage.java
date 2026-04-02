@@ -5,32 +5,32 @@ import org.openqa.selenium.WebDriver;
 
 public class DynamicLoadingPage extends BasePage {
 
-    private final By startButton = By.cssSelector("#start button");
-    private final By loadingIndicator = By.id("loading");
-    private final By finishText = By.id("finish");
+  private final By startButton = By.cssSelector("#start button");
+  private final By loadingIndicator = By.id("loading");
+  private final By finishText = By.id("finish");
 
-    public DynamicLoadingPage(WebDriver driver) {
-        super(driver);
-    }
+  public DynamicLoadingPage(WebDriver driver) {
+    super(driver);
+  }
 
-    public void openExampleTwo() {
-        openPath("/dynamic_loading/2");
-    }
+  public void openExampleTwo() {
+    openPath("/dynamic_loading/2");
+  }
 
-    public void clickStart() {
-        click(startButton);
-    }
+  public void clickStart() {
+    click(startButton);
+  }
 
-    public void waitForLoadingToFinish() {
-        waitUtils.waitForInvisibility(loadingIndicator);
-        waitUtils.waitForVisible(finishText);
-    }
+  public void waitForLoadingToFinish() {
+    waitUtils.waitForInvisibility(loadingIndicator);
+    waitUtils.waitForVisible(finishText);
+  }
 
-    public String getFinishText() {
-        return getText(finishText);
-    }
+  public String getFinishText() {
+    return getText(finishText);
+  }
 
-    public boolean isFinishTextDisplayed() {
-        return isDisplayed(finishText);
-    }
+  public boolean isFinishTextDisplayed() {
+    return isDisplayed(finishText);
+  }
 }

@@ -8,19 +8,23 @@ import testdata.TestDataProviders;
 
 public class DropdownTest extends BaseTest {
 
-    @Test(groups = {"smoke", "regression"}, dataProvider = "dropdownSelectionData", dataProviderClass = TestDataProviders.class)
-    public void shouldSelectOption(String selectionType, String selectionValue, String expectedOption) {
-        DropdownPage dropdownPage = new DropdownPage(driver);
+  @Test(
+      groups = {"smoke", "regression"},
+      dataProvider = "dropdownSelectionData",
+      dataProviderClass = TestDataProviders.class)
+  public void shouldSelectOption(
+      String selectionType, String selectionValue, String expectedOption) {
+    DropdownPage dropdownPage = new DropdownPage(driver);
 
-        dropdownPage.open();
+    dropdownPage.open();
 
-        if (selectionType.equals("visibleText")) {
-            dropdownPage.selectByVisibleText(selectionValue);
-        } else {
-            dropdownPage.selectByValue(selectionValue);
-        }
-
-        Assert.assertEquals(dropdownPage.getSelectedOptionText(), expectedOption,
-                "Expected option was not selected.");
+    if (selectionType.equals("visibleText")) {
+      dropdownPage.selectByVisibleText(selectionValue);
+    } else {
+      dropdownPage.selectByValue(selectionValue);
     }
+
+    Assert.assertEquals(
+        dropdownPage.getSelectedOptionText(), expectedOption, "Expected option was not selected.");
+  }
 }

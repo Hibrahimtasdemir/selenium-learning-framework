@@ -5,27 +5,27 @@ import org.openqa.selenium.WebDriver;
 
 public class KeyPressesPage extends BasePage {
 
-    private final By targetInput = By.id("target");
-    private final By resultText = By.id("result");
+  private final By targetInput = By.id("target");
+  private final By resultText = By.id("result");
 
-    public KeyPressesPage(WebDriver driver) {
-        super(driver);
-    }
+  public KeyPressesPage(WebDriver driver) {
+    super(driver);
+  }
 
-    public void open() {
-        openPath("/key_presses");
-    }
+  public void open() {
+    openPath("/key_presses");
+  }
 
-    public void pressKey(CharSequence key) {
-        find(targetInput).sendKeys(key);
-        pauseForDemo();
-    }
+  public void pressKey(CharSequence key) {
+    find(targetInput).sendKeys(key);
+    pauseForDemo();
+  }
 
-    public String getResultText() {
-        return getText(resultText);
-    }
+  public String getResultText() {
+    return getText(resultText);
+  }
 
-    public boolean isResultDisplayed(String expectedText) {
-        return waitUtils.waitForTextContains(resultText, expectedText);
-    }
+  public boolean isResultDisplayed(String expectedText) {
+    return waitUtils.waitForTextContains(resultText, expectedText);
+  }
 }

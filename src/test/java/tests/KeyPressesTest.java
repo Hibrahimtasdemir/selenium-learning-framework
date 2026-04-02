@@ -8,16 +8,19 @@ import testdata.TestDataProviders;
 
 public class KeyPressesTest extends BaseTest {
 
-    @Test(groups = {"regression"}, dataProvider = "keyPressData", dataProviderClass = TestDataProviders.class)
-    public void shouldDisplayPressedKey(CharSequence key, String expectedText) {
-        KeyPressesPage keyPressesPage = new KeyPressesPage(driver);
+  @Test(
+      groups = {"regression"},
+      dataProvider = "keyPressData",
+      dataProviderClass = TestDataProviders.class)
+  public void shouldDisplayPressedKey(CharSequence key, String expectedText) {
+    KeyPressesPage keyPressesPage = new KeyPressesPage(driver);
 
-        keyPressesPage.open();
-        keyPressesPage.pressKey(key);
+    keyPressesPage.open();
+    keyPressesPage.pressKey(key);
 
-        Assert.assertTrue(keyPressesPage.isResultDisplayed(expectedText),
-                "Expected key result was not displayed.");
-        Assert.assertEquals(keyPressesPage.getResultText(), expectedText,
-                "Unexpected key result text.");
-    }
+    Assert.assertTrue(
+        keyPressesPage.isResultDisplayed(expectedText), "Expected key result was not displayed.");
+    Assert.assertEquals(
+        keyPressesPage.getResultText(), expectedText, "Unexpected key result text.");
+  }
 }

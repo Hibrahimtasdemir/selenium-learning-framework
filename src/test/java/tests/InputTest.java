@@ -7,13 +7,13 @@ import pages.InputPage;
 
 public class InputTest extends BaseTest {
 
-    @Test(groups = {"regression"})
-    public void shouldTypeIntoInputField() {
-        InputPage inputPage = new InputPage(driver);
+  @Test(groups = {"regression"})
+  public void shouldTypeIntoInputField() {
+    InputPage inputPage = new InputPage(driver);
 
-        inputPage.open();
-        inputPage.typeNumber("12345");
+    inputPage.open();
+    inputPage.typeNumber("12345");
 
-        Assert.assertEquals(inputPage.getInputValue(), "12345");
-    }
+    Assert.assertEquals(inputPage.getInputValue(), "12345");
+  }
 }

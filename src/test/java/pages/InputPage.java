@@ -5,21 +5,21 @@ import org.openqa.selenium.WebDriver;
 
 public class InputPage extends BasePage {
 
-    private final By numberInput = By.cssSelector("input[type='number']");
+  private final By numberInput = By.cssSelector("input[type='number']");
 
-    public InputPage(WebDriver driver) {
-        super(driver);
-    }
+  public InputPage(WebDriver driver) {
+    super(driver);
+  }
 
-    public void open() {
-        openPath("/inputs");
-    }
+  public void open() {
+    openPath("/inputs");
+  }
 
-    public void typeNumber(String value) {
-        type(numberInput, value);
-    }
+  public void typeNumber(String value) {
+    type(numberInput, value);
+  }
 
-    public String getInputValue() {
-        return find(numberInput).getAttribute("value");
-    }
+  public String getInputValue() {
+    return find(numberInput).getAttribute("value");
+  }
 }

@@ -6,29 +6,27 @@ import org.openqa.selenium.interactions.Actions;
 
 public class ContextMenuPage extends BasePage {
 
-    private final By hotSpot = By.id("hot-spot");
+  private final By hotSpot = By.id("hot-spot");
 
-    public ContextMenuPage(WebDriver driver) {
-        super(driver);
-    }
+  public ContextMenuPage(WebDriver driver) {
+    super(driver);
+  }
 
-    public void open() {
-        openPath("/context_menu");
-    }
+  public void open() {
+    openPath("/context_menu");
+  }
 
-    public void rightClickHotSpot() {
-        new Actions(driver)
-                .contextClick(find(hotSpot))
-                .perform();
-        pauseForDemo();
-    }
+  public void rightClickHotSpot() {
+    new Actions(driver).contextClick(find(hotSpot)).perform();
+    pauseForDemo();
+  }
 
-    public String getAlertText() {
-        return waitUtils.waitForAlert().getText();
-    }
+  public String getAlertText() {
+    return waitUtils.waitForAlert().getText();
+  }
 
-    public void acceptAlert() {
-        waitUtils.waitForAlert().accept();
-        pauseForDemo();
-    }
+  public void acceptAlert() {
+    waitUtils.waitForAlert().accept();
+    pauseForDemo();
+  }
 }

@@ -9,26 +9,26 @@ import utils.WaitUtils;
 
 public class BaseTest {
 
-    protected WebDriver driver;
-    protected WaitUtils waitUtils;
+  protected WebDriver driver;
+  protected WaitUtils waitUtils;
 
-    @BeforeMethod(alwaysRun = true)
-    public void setUp() {
-        DriverFactory.createDriver();
-        driver = DriverFactory.getDriver();
-        waitUtils = new WaitUtils(driver);
-        pauseForDemo();
-    }
+  @BeforeMethod(alwaysRun = true)
+  public void setUp() {
+    DriverFactory.createDriver();
+    driver = DriverFactory.getDriver();
+    waitUtils = new WaitUtils(driver);
+    pauseForDemo();
+  }
 
-    @AfterMethod(alwaysRun = true)
-    public void tearDown() {
-        if (driver != null) {
-            pauseForDemo();
-            DriverFactory.quitDriver();
-        }
+  @AfterMethod(alwaysRun = true)
+  public void tearDown() {
+    if (driver != null) {
+      pauseForDemo();
+      DriverFactory.quitDriver();
     }
+  }
 
-    protected void pauseForDemo() {
-        DemoUtils.pause();
-    }
+  protected void pauseForDemo() {
+    DemoUtils.pause();
+  }
 }
