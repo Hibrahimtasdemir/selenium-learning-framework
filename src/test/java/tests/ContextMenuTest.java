@@ -7,7 +7,7 @@ import pages.ContextMenuPage;
 
 public class ContextMenuTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldShowAlertAfterRightClick() {
         ContextMenuPage contextMenuPage = new ContextMenuPage(driver);
 

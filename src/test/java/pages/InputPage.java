@@ -12,7 +12,7 @@ public class InputPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/inputs");
+        openPath("/inputs");
     }
 
     public void typeNumber(String value) {

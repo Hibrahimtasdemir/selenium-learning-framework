@@ -7,7 +7,7 @@ import pages.InputPage;
 
 public class InputTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldTypeIntoInputField() {
         InputPage inputPage = new InputPage(driver);
 

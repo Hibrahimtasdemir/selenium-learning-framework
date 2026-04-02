@@ -7,7 +7,7 @@ import pages.MultipleWindowsPage;
 
 public class MultipleWindowsTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void shouldSwitchToNewWindow() {
         MultipleWindowsPage multipleWindowsPage = new MultipleWindowsPage(driver);
 

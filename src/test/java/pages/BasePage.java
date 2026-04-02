@@ -1,5 +1,6 @@
 package pages;
 
+import config.FrameworkConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,9 +32,19 @@ public abstract class BasePage {
         pauseForDemo();
     }
 
+    protected void openPath(String path) {
+        String normalizedPath = path.startsWith("/") ? path : "/" + path;
+        openUrl(FrameworkConfig.getBaseUrl() + normalizedPath);
+    }
+
     protected void navigateTo(String url) {
         driver.navigate().to(url);
         pauseForDemo();
+    }
+
+    protected void navigateToPath(String path) {
+        String normalizedPath = path.startsWith("/") ? path : "/" + path;
+        navigateTo(FrameworkConfig.getBaseUrl() + normalizedPath);
     }
 
     protected void navigateBack() {

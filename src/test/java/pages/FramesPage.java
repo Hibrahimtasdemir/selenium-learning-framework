@@ -15,7 +15,7 @@ public class FramesPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/iframe");
+        openPath("/iframe");
     }
 
     public void switchToEditorFrame() {

@@ -7,7 +7,7 @@ import pages.BrokenImagesPage;
 
 public class BrokenImagesTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldDetectBrokenImages() {
         BrokenImagesPage brokenImagesPage = new BrokenImagesPage(driver);
 

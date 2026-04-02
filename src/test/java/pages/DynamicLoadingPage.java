@@ -14,7 +14,7 @@ public class DynamicLoadingPage extends BasePage {
     }
 
     public void openExampleTwo() {
-        openUrl("https://the-internet.herokuapp.com/dynamic_loading/2");
+        openPath("/dynamic_loading/2");
     }
 
     public void clickStart() {

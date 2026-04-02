@@ -9,7 +9,7 @@ import java.nio.file.Path;
 
 public class FileUploadTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void shouldUploadFileSuccessfully() {
         FileUploadPage fileUploadPage = new FileUploadPage(driver);
         String absoluteFilePath = Path.of("src", "test", "resources", "sample-upload.txt")

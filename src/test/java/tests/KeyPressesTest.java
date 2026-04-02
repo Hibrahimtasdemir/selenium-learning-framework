@@ -8,7 +8,7 @@ import testdata.TestDataProviders;
 
 public class KeyPressesTest extends BaseTest {
 
-    @Test(dataProvider = "keyPressData", dataProviderClass = TestDataProviders.class)
+    @Test(groups = {"regression"}, dataProvider = "keyPressData", dataProviderClass = TestDataProviders.class)
     public void shouldDisplayPressedKey(CharSequence key, String expectedText) {
         KeyPressesPage keyPressesPage = new KeyPressesPage(driver);
 

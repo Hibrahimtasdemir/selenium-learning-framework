@@ -7,7 +7,7 @@ import pages.LoginPage;
 
 public class LoginTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void shouldLoginSuccessfully() {
         LoginPage loginPage = new LoginPage(driver);
 

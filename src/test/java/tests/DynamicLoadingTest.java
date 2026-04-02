@@ -7,7 +7,7 @@ import pages.DynamicLoadingPage;
 
 public class DynamicLoadingTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void shouldWaitForHiddenElementToAppear() {
         DynamicLoadingPage dynamicLoadingPage = new DynamicLoadingPage(driver);
 

@@ -15,7 +15,7 @@ public class CheckboxesPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/checkboxes");
+        openPath("/checkboxes");
     }
 
     public int getCheckboxCount() {

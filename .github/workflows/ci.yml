@@ -1,0 +1,137 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      run_regression:
+        description: "Run full regression in parallel mode"
+        required: false
+        default: "false"
+        type: choice
+        options:
+          - "false"
+          - "true"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke-tests:
+    name: Smoke Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Compile
+        run: mvn -B -q clean test-compile
+
+      - name: Run Smoke Suite
+        run: mvn -B -q "-DsuiteXmlFile=testng-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+
+      - name: Generate Allure Report
+        if: always()
+        run: mvn -B -q allure:report
+
+      - name: Upload Smoke Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke-artifacts
+          retention-days: 14
+          path: |
+            target/surefire-reports/**
+            target/allure-results/**
+            target/site/allure-maven-plugin/**
+            test-output/report/**
+
+  quality-gate:
+    name: Quality Gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Compile
+        run: mvn -B -q clean test-compile
+
+      - name: Spotless Check
+        run: mvn -B -q spotless:check
+
+      - name: SpotBugs
+        run: mvn -B -q "-DskipTests=true" "-Dspotbugs.fail.on.error=true" spotbugs:spotbugs
+
+      - name: Upload SpotBugs Artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: spotbugs-report
+          retention-days: 14
+          path: |
+            target/spotbugsXml.xml
+
+  regression-parallel:
+    name: Regression Parallel
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.run_regression == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Run Parallel Regression Suite
+        run: mvn -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+
+      - name: Generate Allure Report
+        if: always()
+        run: mvn -B -q allure:report
+
+      - name: Upload Regression Artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-parallel-artifacts
+          retention-days: 14
+          path: |
+            target/surefire-reports/**
+            target/allure-results/**
+            target/site/allure-maven-plugin/**
+            test-output/report/**

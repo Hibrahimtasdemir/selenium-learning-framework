@@ -8,7 +8,7 @@ import testdata.TestDataProviders;
 
 public class DropdownTest extends BaseTest {
 
-    @Test(dataProvider = "dropdownSelectionData", dataProviderClass = TestDataProviders.class)
+    @Test(groups = {"smoke", "regression"}, dataProvider = "dropdownSelectionData", dataProviderClass = TestDataProviders.class)
     public void shouldSelectOption(String selectionType, String selectionValue, String expectedOption) {
         DropdownPage dropdownPage = new DropdownPage(driver);
 

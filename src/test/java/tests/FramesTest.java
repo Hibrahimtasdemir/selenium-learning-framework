@@ -7,7 +7,7 @@ import pages.FramesPage;
 
 public class FramesTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldTypeInsideIframeEditor() {
         FramesPage framesPage = new FramesPage(driver);
 

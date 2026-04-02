@@ -13,7 +13,7 @@ public class KeyPressesPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/key_presses");
+        openPath("/key_presses");
     }
 
     public void pressKey(CharSequence key) {

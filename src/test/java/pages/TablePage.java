@@ -12,7 +12,7 @@ public class TablePage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/tables");
+        openPath("/tables");
     }
 
     public int getRowCount() {

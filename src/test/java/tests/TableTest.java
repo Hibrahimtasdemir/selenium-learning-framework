@@ -7,7 +7,7 @@ import pages.TablePage;
 
 public class TableTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldReadDataFromTable() {
         TablePage tablePage = new TablePage(driver);
 

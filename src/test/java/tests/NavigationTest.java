@@ -7,7 +7,7 @@ import pages.NavigationPage;
 
 public class NavigationTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void shouldNavigateBetweenPages() {
         NavigationPage navigationPage = new NavigationPage(driver);
 

@@ -14,7 +14,7 @@ public class FileUploadPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/upload");
+        openPath("/upload");
     }
 
     public void chooseFile(String absoluteFilePath) {

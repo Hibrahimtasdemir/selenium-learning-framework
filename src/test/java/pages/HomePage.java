@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
 
-    private static final String HOME_URL = "https://the-internet.herokuapp.com/";
     private static final String HOME_TITLE = "The Internet";
 
     public HomePage(WebDriver driver) {
@@ -12,7 +11,7 @@ public class HomePage extends BasePage {
     }
 
     public void open() {
-        openUrl(HOME_URL);
+        openPath("/");
         waitUtils.waitForTitleIs(HOME_TITLE);
     }
 

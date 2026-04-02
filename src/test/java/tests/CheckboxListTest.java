@@ -7,7 +7,7 @@ import pages.CheckboxesPage;
 
 public class CheckboxListTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldSelectAllCheckboxes() {
         CheckboxesPage checkboxesPage = new CheckboxesPage(driver);
 

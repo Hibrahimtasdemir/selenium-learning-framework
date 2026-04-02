@@ -13,7 +13,7 @@ public class DropdownPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/dropdown");
+        openPath("/dropdown");
     }
 
     public void selectByVisibleText(String text) {

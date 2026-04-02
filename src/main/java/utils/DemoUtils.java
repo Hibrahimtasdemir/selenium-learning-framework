@@ -1,8 +1,10 @@
 package utils;
 
+import config.FrameworkConfig;
+
 public final class DemoUtils {
 
-    private static final long DEFAULT_PAUSE_MS = Long.getLong("demo.pause.ms", 1000L);
+    private static final long DEFAULT_PAUSE_MS = FrameworkConfig.getDemoPauseMs();
 
     private DemoUtils() {
     }

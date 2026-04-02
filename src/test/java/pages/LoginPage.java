@@ -15,7 +15,7 @@ public class LoginPage extends BasePage {
     }
 
     public void open() {
-        driver.get("https://the-internet.herokuapp.com/login");
+        openPath("/login");
     }
 
     public void login(String username, String password) {

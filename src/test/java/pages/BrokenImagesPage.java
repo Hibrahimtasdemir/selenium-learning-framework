@@ -16,7 +16,7 @@ public class BrokenImagesPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/broken_images");
+        openPath("/broken_images");
     }
 
     public int getImageCount() {

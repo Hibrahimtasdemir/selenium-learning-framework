@@ -7,7 +7,7 @@ import pages.HomePage;
 
 public class FirstTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void openWebsiteAndVerifyTitle() {
         HomePage homePage = new HomePage(driver);
         String expectedTitle = "The Internet";

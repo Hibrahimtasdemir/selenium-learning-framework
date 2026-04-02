@@ -15,7 +15,7 @@ public class MultipleWindowsPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/windows");
+        openPath("/windows");
     }
 
     public String getCurrentWindowHandle() {

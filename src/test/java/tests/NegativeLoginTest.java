@@ -17,7 +17,7 @@ public class NegativeLoginTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "invalidLoginData")
+    @Test(groups = {"regression"}, dataProvider = "invalidLoginData")
     public void shouldShowErrorMessageForInvalidLogin(String username, String password, String expectedMessage) {
         LoginPage loginPage = new LoginPage(driver);
 

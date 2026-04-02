@@ -7,7 +7,7 @@ import pages.HoverPage;
 
 public class HoverTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldDisplayCaptionWhenHoveringOverUser() {
         HoverPage hoverPage = new HoverPage(driver);
 

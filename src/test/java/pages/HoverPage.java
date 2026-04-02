@@ -16,7 +16,7 @@ public class HoverPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/hovers");
+        openPath("/hovers");
     }
 
     public void hoverOverUser(int userIndex) {

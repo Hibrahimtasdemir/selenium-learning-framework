@@ -18,7 +18,7 @@ public class StatusCodesTest extends BaseTest {
         };
     }
 
-    @Test(dataProvider = "statusCodeData")
+    @Test(groups = {"regression"}, dataProvider = "statusCodeData")
     public void shouldOpenStatusCodePage(int statusCode, String expectedMessage) {
         StatusCodesPage statusCodesPage = new StatusCodesPage(driver);
 

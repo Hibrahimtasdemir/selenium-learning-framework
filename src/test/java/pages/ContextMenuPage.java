@@ -13,7 +13,7 @@ public class ContextMenuPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/context_menu");
+        openPath("/context_menu");
     }
 
     public void rightClickHotSpot() {

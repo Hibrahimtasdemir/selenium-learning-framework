@@ -7,7 +7,7 @@ import pages.CheckboxesPage;
 
 public class ElementStateTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"regression"})
     public void shouldCheckElementStates() {
         CheckboxesPage checkboxesPage = new CheckboxesPage(driver);
 

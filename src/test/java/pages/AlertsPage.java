@@ -16,7 +16,7 @@ public class AlertsPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/javascript_alerts");
+        openPath("/javascript_alerts");
     }
 
     public void acceptJsAlert() {

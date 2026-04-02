@@ -4,20 +4,17 @@ import org.openqa.selenium.WebDriver;
 
 public class NavigationPage extends BasePage {
 
-    private static final String HOME_URL = "https://the-internet.herokuapp.com/";
-    private static final String LOGIN_URL = "https://the-internet.herokuapp.com/login";
-
     public NavigationPage(WebDriver driver) {
         super(driver);
     }
 
     public void openHomePage() {
-        openUrl(HOME_URL);
+        openPath("/");
         waitForTitle("The Internet");
     }
 
     public void goToLoginPage() {
-        navigateTo(LOGIN_URL);
+        navigateToPath("/login");
         waitForUrlContains("/login");
     }
 

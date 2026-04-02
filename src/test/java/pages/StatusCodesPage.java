@@ -12,7 +12,7 @@ public class StatusCodesPage extends BasePage {
     }
 
     public void open() {
-        openUrl("https://the-internet.herokuapp.com/status_codes");
+        openPath("/status_codes");
     }
 
     public void clickStatusCodeLink(int statusCode) {

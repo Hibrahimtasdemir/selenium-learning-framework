@@ -8,7 +8,7 @@ import testdata.TestDataProviders;
 
 public class CheckboxTest extends BaseTest {
 
-    @Test(dataProvider = "checkboxIndexData", dataProviderClass = TestDataProviders.class)
+    @Test(groups = {"smoke", "regression"}, dataProvider = "checkboxIndexData", dataProviderClass = TestDataProviders.class)
     public void shouldSelectCheckbox(int checkboxIndex) {
         CheckboxesPage checkboxesPage = new CheckboxesPage(driver);
 
