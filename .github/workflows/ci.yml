@@ -44,15 +44,18 @@ jobs:
           java-version: "21"
           cache: maven
 
+      - name: Bootstrap Maven Wrapper
+        run: mvn -N io.takari:maven:wrapper
+
       - name: Compile
-        run: mvn -B -q clean test-compile
+        run: ./mvnw -B -q clean test-compile
 
       - name: Run Smoke Suite
-        run: mvn -B -q "-DsuiteXmlFile=testng-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+        run: ./mvnw -B -q "-DsuiteXmlFile=testng-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
 
       - name: Generate Allure Report
         if: always()
-        run: mvn -B -q allure:report
+        run: ./mvnw -B -q allure:report
 
       - name: Upload Smoke Artifacts
         if: always()
@@ -83,13 +86,13 @@ jobs:
           cache: maven
 
       - name: Compile
-        run: mvn -B -q clean test-compile
+        run: ./mvnw -B -q clean test-compile
 
       - name: Spotless Check
-        run: mvn -B -q spotless:check
+        run: ./mvnw -B -q spotless:check
 
       - name: SpotBugs
-        run: mvn -B -q "-DskipTests=true" "-Dspotbugs.fail.on.error=true" spotbugs:spotbugs
+        run: ./mvnw -B -q "-DskipTests=true" "-Dspotbugs.fail.on.error=true" spotbugs:spotbugs
 
       - name: Upload SpotBugs Artifact
         if: always()
@@ -118,11 +121,11 @@ jobs:
           cache: maven
 
       - name: Run Parallel Regression Suite
-        run: mvn -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+        run: ./mvnw -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
 
       - name: Generate Allure Report
         if: always()
-        run: mvn -B -q allure:report
+        run: ./mvnw -B -q allure:report
 
       - name: Upload Regression Artifacts
         if: always()
