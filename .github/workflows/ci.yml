@@ -55,6 +55,18 @@ jobs:
 =======
       - name: Bootstrap Maven Wrapper
         run: mvn -N io.takari:maven:wrapper
+
+          - name: Set up Maven 3.9.6
+            uses: apache/setup-maven@v3
+            with:
+              maven-version: '3.9.6'
+
+          - name: Bootstrap Maven Wrapper (if missing)
+            run: |
+              if [ ! -f mvnw ]; then
+                mvn -N io.takari:maven:wrapper
+              fi
+
 >>>>>>> origin/main
 
       - name: Compile
