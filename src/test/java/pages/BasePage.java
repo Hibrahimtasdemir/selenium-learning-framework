@@ -1,6 +1,7 @@
 package pages;
 
 import config.FrameworkConfig;
+import driver.DriverFactory;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -16,6 +17,11 @@ public abstract class BasePage {
   public BasePage(WebDriver driver) {
     this.driver = driver;
     this.waitUtils = new WaitUtils(driver);
+  }
+
+  public BasePage() {
+    this.driver = DriverFactory.getDriver();
+    this.waitUtils = new WaitUtils(this.driver);
   }
 
   protected WebElement find(By locator) {
