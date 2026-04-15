@@ -20,6 +20,7 @@ public abstract class BasePage {
   }
 
   public BasePage() {
+    DriverFactory.createDriver();
     this.driver = DriverFactory.getDriver();
     this.waitUtils = new WaitUtils(this.driver);
   }
