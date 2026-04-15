@@ -47,6 +47,11 @@ jobs:
           java-version: "21"
           cache: maven
 
+      - name: Set up Maven 3.9.6
+        uses: apache/setup-maven@v3
+        with:
+          maven-version: '3.9.6'
+
       - name: Compile
         run: mvn -B -q clean test-compile
 
@@ -88,6 +93,11 @@ jobs:
           java-version: "21"
           cache: maven
 
+      - name: Set up Maven 3.9.6
+        uses: apache/setup-maven@v3
+        with:
+          maven-version: '3.9.6'
+
       - name: Compile
         run: mvn -B -q clean test-compile
 
@@ -125,6 +135,11 @@ jobs:
           distribution: temurin
           java-version: "21"
           cache: maven
+
+      - name: Set up Maven 3.9.6
+        uses: apache/setup-maven@v3
+        with:
+          maven-version: '3.9.6'
 
       - name: Run Parallel Regression Suite
         run: mvn -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
