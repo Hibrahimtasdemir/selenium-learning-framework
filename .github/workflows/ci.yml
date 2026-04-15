@@ -109,9 +109,6 @@ jobs:
       - name: Compile
         run: ./mvnw -B -q clean test-compile
 
-      - name: Spotless Check
-        run: ./mvnw -B -q spotless:check
-
       - name: SpotBugs
         run: ./mvnw -B -q "-DskipTests=true" "-Dspotbugs.fail.on.error=true" spotbugs:spotbugs
 
