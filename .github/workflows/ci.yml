@@ -47,7 +47,14 @@ jobs:
           java-version: "21"
           cache: maven
 
-      # Using project Maven Wrapper (`./mvnw`) instead of installing Maven on runner
+      # Debug: show which Maven is used and wrapper config
+      - name: Debug Maven environment
+        run: |
+          echo "--- which mvn ---"; which mvn || true
+          echo "--- mvn -v ---"; mvn -v || true
+          echo "--- ./mvnw -v ---"; ./mvnw -v || true
+          echo "--- ls mvnw and wrapper ---"; ls -la mvnw .mvn/wrapper || true
+          echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Compile
         run: ./mvnw -B -q clean test-compile
@@ -90,7 +97,13 @@ jobs:
           java-version: "21"
           cache: maven
 
-      # Using project Maven Wrapper (`./mvnw`) instead of installing Maven on runner
+      - name: Debug Maven environment
+        run: |
+          echo "--- which mvn ---"; which mvn || true
+          echo "--- mvn -v ---"; mvn -v || true
+          echo "--- ./mvnw -v ---"; ./mvnw -v || true
+          echo "--- ls mvnw and wrapper ---"; ls -la mvnw .mvn/wrapper || true
+          echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Compile
         run: ./mvnw -B -q clean test-compile
@@ -130,7 +143,13 @@ jobs:
           java-version: "21"
           cache: maven
 
-      # Using project Maven Wrapper (`./mvnw`) instead of installing Maven on runner
+      - name: Debug Maven environment
+        run: |
+          echo "--- which mvn ---"; which mvn || true
+          echo "--- mvn -v ---"; mvn -v || true
+          echo "--- ./mvnw -v ---"; ./mvnw -v || true
+          echo "--- ls mvnw and wrapper ---"; ls -la mvnw .mvn/wrapper || true
+          echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Run Parallel Regression Suite
         run: ./mvnw -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
