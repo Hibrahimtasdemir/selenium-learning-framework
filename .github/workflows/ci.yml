@@ -37,6 +37,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Make mvnw executable
+        run: chmod +x mvnw || true
+
       - name: Set up Java 21
         uses: actions/setup-java@v5
         with:
@@ -75,6 +78,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Make mvnw executable
+        run: chmod +x mvnw || true
+
       - name: Set up Java 21
         uses: actions/setup-java@v5
         with:
@@ -109,6 +115,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+
+      - name: Make mvnw executable
+        run: chmod +x mvnw || true
 
       - name: Set up Java 21
         uses: actions/setup-java@v5
