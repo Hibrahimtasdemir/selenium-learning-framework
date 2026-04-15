@@ -47,6 +47,11 @@ jobs:
           java-version: "21"
           cache: maven
 
+      - name: Install Maven 3.9.6
+        uses: apache/setup-maven@v3
+        with:
+          maven-version: '3.9.6'
+
       # Debug: show which Maven is used and wrapper config
       - name: Debug Maven environment
         run: |
@@ -57,14 +62,14 @@ jobs:
           echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Compile
-        run: ./mvnw -B -q clean test-compile
+        run: mvn -B -q clean test-compile
 
       - name: Run Smoke Suite
-        run: ./mvnw -B -q "-DsuiteXmlFile=testng-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+        run: mvn -B -q "-DsuiteXmlFile=testng-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
 
       - name: Generate Allure Report
         if: always()
-        run: ./mvnw -B -q allure:report
+        run: mvn -B -q allure:report
 
       - name: Upload Smoke Artifacts
         if: always()
@@ -106,13 +111,13 @@ jobs:
           echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Compile
-        run: ./mvnw -B -q clean test-compile
+        run: mvn -B -q clean test-compile
 
       - name: Spotless Check
-        run: ./mvnw -B -q spotless:check
+        run: mvn -B -q spotless:check
 
       - name: SpotBugs
-        run: ./mvnw -B -q "-DskipTests=true" "-Dspotbugs.fail.on.error=true" spotbugs:spotbugs
+        run: mvn -B -q "-DskipTests=true" "-Dspotbugs.fail.on.error=true" spotbugs:spotbugs
 
       - name: Upload SpotBugs Artifact
         if: always()
@@ -152,11 +157,11 @@ jobs:
           echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Run Parallel Regression Suite
-        run: ./mvnw -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+        run: mvn -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
 
       - name: Generate Allure Report
         if: always()
-        run: ./mvnw -B -q allure:report
+        run: mvn -B -q allure:report
 
       - name: Upload Regression Artifacts
         if: always()
