@@ -1,0 +1,303 @@
+openapi: 3.0.3
+info:
+  title: Selenium Learning Framework - JsonPlaceholder Contract
+  version: 1.0.0
+servers:
+  - url: https://jsonplaceholder.typicode.com
+
+paths:
+  /users/{id}:
+    get:
+      summary: Get user by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      summary: Update user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserWrite'
+      responses:
+        '200':
+          description: User updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWriteResponse'
+    delete:
+      summary: Delete user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: User deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+        '204':
+          description: User deleted (no content)
+
+  /users:
+    post:
+      summary: Create user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserWrite'
+      responses:
+        '201':
+          description: User created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWriteResponse'
+        '200':
+          description: User created (alternative status)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserWriteResponse'
+
+  /posts/{id}:
+    get:
+      summary: Get post by id
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Post found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostRead'
+    put:
+      summary: Update post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PostWrite'
+                - $ref: '#/components/schemas/OrderWrite'
+      responses:
+        '200':
+          description: Post updated
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PostWriteResponse'
+                  - $ref: '#/components/schemas/OrderWriteResponse'
+        '201':
+          description: Post updated (alternative status)
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PostWriteResponse'
+                  - $ref: '#/components/schemas/OrderWriteResponse'
+    delete:
+      summary: Delete post
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Post deleted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteResponse'
+        '204':
+          description: Post deleted (no content)
+
+  /posts:
+    post:
+      summary: Create post
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: '#/components/schemas/PostWrite'
+                - $ref: '#/components/schemas/OrderWrite'
+      responses:
+        '201':
+          description: Post created
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PostWriteResponse'
+                  - $ref: '#/components/schemas/OrderWriteResponse'
+        '200':
+          description: Post created (alternative status)
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PostWriteResponse'
+                  - $ref: '#/components/schemas/OrderWriteResponse'
+
+components:
+  schemas:
+    User:
+      type: object
+      required: [id, name, username, email]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        website:
+          type: string
+      additionalProperties: true
+
+    UserWrite:
+      type: object
+      required: [name, username, email]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+      additionalProperties: true
+
+    UserWriteResponse:
+      type: object
+      required: [id, name, username, email]
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        username:
+          type: string
+        email:
+          type: string
+      additionalProperties: true
+
+    PostRead:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: integer
+        userId:
+          type: integer
+        title:
+          type: string
+        body:
+          type: string
+      additionalProperties: true
+
+    PostWrite:
+      type: object
+      required: [title, body, userId]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        body:
+          type: string
+        userId:
+          type: integer
+      additionalProperties: true
+
+    PostWriteResponse:
+      type: object
+      required: [id, title, body, userId]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        body:
+          type: string
+        userId:
+          type: integer
+      additionalProperties: true
+
+    OrderWrite:
+      type: object
+      required: [orderNumber, status, amount]
+      properties:
+        id:
+          type: integer
+        orderNumber:
+          type: string
+        status:
+          type: string
+        amount:
+          type: number
+      additionalProperties: true
+
+    OrderWriteResponse:
+      type: object
+      required: [id, orderNumber, status, amount]
+      properties:
+        id:
+          type: integer
+        orderNumber:
+          type: string
+        status:
+          type: string
+        amount:
+          type: number
+      additionalProperties: true
+
+    DeleteResponse:
+      type: object
+      additionalProperties: false
