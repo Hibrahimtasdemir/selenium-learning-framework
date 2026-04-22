@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.notNullValue;
 
 import base.BaseApiTest;
 import config.FrameworkConfig;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import java.util.List;
@@ -17,6 +19,7 @@ import testdata.ApiContractLoader;
 
 public class UsersCrudApiTest extends BaseApiTest {
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldCreateUser() {
     Map<String, Object> requestBody =
@@ -35,6 +38,7 @@ public class UsersCrudApiTest extends BaseApiTest {
     assertEchoFields(validatableResponse, requestBody, FrameworkConfig.getApiUsersEchoFields());
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldUpdateUser() {
     Map<String, Object> requestBody =
@@ -54,6 +58,7 @@ public class UsersCrudApiTest extends BaseApiTest {
     assertEchoFields(validatableResponse, requestBody, FrameworkConfig.getApiUsersEchoFields());
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldDeleteUser() {
     int sampleUserId = FrameworkConfig.getApiUsersSampleId();

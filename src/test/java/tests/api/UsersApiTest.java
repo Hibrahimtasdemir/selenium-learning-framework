@@ -4,12 +4,15 @@ import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInC
 
 import base.BaseApiTest;
 import config.FrameworkConfig;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class UsersApiTest extends BaseApiTest {
 
+  @Severity(SeverityLevel.CRITICAL)
   @Test(groups = {"api", "api-smoke"})
   public void shouldGetUserById() {
     int sampleUserId = FrameworkConfig.getApiUsersSampleId();

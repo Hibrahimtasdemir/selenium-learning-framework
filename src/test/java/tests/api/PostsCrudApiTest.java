@@ -5,6 +5,8 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 
 import base.BaseApiTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import java.util.Map;
 import org.testng.Assert;
@@ -12,6 +14,7 @@ import org.testng.annotations.Test;
 
 public class PostsCrudApiTest extends BaseApiTest {
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldCreatePost() {
     Map<String, Object> requestBody =
@@ -33,6 +36,7 @@ public class PostsCrudApiTest extends BaseApiTest {
         .body(matchesJsonSchemaInClasspath("schemas/posts/post-response.schema.json"));
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldUpdatePost() {
     Map<String, Object> requestBody =
@@ -55,6 +59,7 @@ public class PostsCrudApiTest extends BaseApiTest {
         .body(matchesJsonSchemaInClasspath("schemas/posts/post-response.schema.json"));
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldDeletePost() {
     Response response = apiRequest().when().delete("/posts/{id}", 1);

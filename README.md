@@ -13,7 +13,22 @@ Run tests locally:
 ```powershell
 # Preferred: use the Maven wrapper (bootstrap once with Maven):
 mvn -N io.takari:maven:wrapper
-./mvnw -Dheadless=true -DsuiteXmlFile=testng.xml clean test
+./mvnw -Dheadless=true -DsuiteXmlFile=testng-ui.xml clean test
+```
+
+## UI Testing (Selenium)
+
+Run UI suites:
+
+```powershell
+# UI regression
+./mvnw "-DsuiteXmlFile=testng-ui.xml" test
+
+# UI smoke
+./mvnw "-DsuiteXmlFile=testng-ui-smoke.xml" test
+
+# UI parallel regression
+./mvnw "-DsuiteXmlFile=testng-ui-parallel.xml" test
 ```
 
 ## API Testing (Rest-Assured)
@@ -34,6 +49,20 @@ Run API suites:
 
 # API regression tests
 ./mvnw "-DsuiteXmlFile=testng-api-regression.xml" test
+```
+
+Maven profiles for test separation:
+
+```powershell
+# UI
+./mvnw -Pui test
+./mvnw -Pui-smoke test
+./mvnw -Pui-parallel test
+
+# API
+./mvnw -Papi test
+./mvnw -Papi-smoke test
+./mvnw -Papi-regression test
 ```
 
 Authentication options:

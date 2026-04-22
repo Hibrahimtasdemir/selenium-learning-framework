@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Selenium Learning Smoke Suite">
+<suite name="Selenium Learning UI Smoke Suite">
     <listeners>
         <listener class-name="listeners.TestListener"/>
         <listener class-name="listeners.RetryTransformer"/>
@@ -11,7 +11,7 @@
             </run>
         </groups>
         <packages>
-            <package name="tests"/>
+            <package name="tests.ui"/>
         </packages>
     </test>
 </suite>

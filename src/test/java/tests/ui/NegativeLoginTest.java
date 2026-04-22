@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -16,6 +19,8 @@ public class NegativeLoginTest extends BaseTest {
       {"", "", "Your username is invalid!"}
     };
   }
+
+  @Severity(SeverityLevel.CRITICAL)
 
   @Test(
       groups = {"regression"},

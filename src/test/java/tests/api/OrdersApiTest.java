@@ -7,6 +7,8 @@ import static org.hamcrest.Matchers.notNullValue;
 
 import base.BaseApiTest;
 import config.FrameworkConfig;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import java.util.List;
@@ -17,6 +19,7 @@ import testdata.ApiContractLoader;
 
 public class OrdersApiTest extends BaseApiTest {
 
+  @Severity(SeverityLevel.CRITICAL)
   @Test(groups = {"api", "api-smoke"})
   public void shouldGetOrderById() {
     int sampleOrderId = FrameworkConfig.getApiOrdersSampleId();
@@ -33,6 +36,7 @@ public class OrdersApiTest extends BaseApiTest {
     Assert.assertEquals(String.valueOf(responseOrderId), String.valueOf(sampleOrderId));
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldCreateOrder() {
     Map<String, Object> requestBody =
@@ -51,6 +55,7 @@ public class OrdersApiTest extends BaseApiTest {
     assertEchoFields(validatableResponse, requestBody, FrameworkConfig.getApiOrdersEchoFields());
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldUpdateOrder() {
     Map<String, Object> requestBody =
@@ -70,6 +75,7 @@ public class OrdersApiTest extends BaseApiTest {
     assertEchoFields(validatableResponse, requestBody, FrameworkConfig.getApiOrdersEchoFields());
   }
 
+  @Severity(SeverityLevel.NORMAL)
   @Test(groups = {"api", "api-regression"})
   public void shouldDeleteOrder() {
     int sampleOrderId = FrameworkConfig.getApiOrdersSampleId();

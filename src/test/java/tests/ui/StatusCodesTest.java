@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -17,6 +20,8 @@ public class StatusCodesTest extends BaseTest {
       {500, "This page returned a 500 status code."}
     };
   }
+
+  @Severity(SeverityLevel.CRITICAL)
 
   @Test(
       groups = {"regression"},

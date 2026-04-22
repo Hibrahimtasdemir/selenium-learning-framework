@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -7,6 +10,8 @@ import pages.CheckboxesPage;
 import testdata.TestDataProviders;
 
 public class CheckboxTest extends BaseTest {
+
+  @Severity(SeverityLevel.MINOR)
 
   @Test(
       groups = {"smoke", "regression"},

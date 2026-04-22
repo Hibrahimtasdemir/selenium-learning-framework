@@ -7,10 +7,13 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.not;
 
 import base.BaseApiTest;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 import org.testng.annotations.Test;
 
 public class PostsApiTest extends BaseApiTest {
 
+  @Severity(SeverityLevel.CRITICAL)
   @Test(groups = {"api", "api-smoke"})
   public void shouldGetPostById() {
     apiRequest()

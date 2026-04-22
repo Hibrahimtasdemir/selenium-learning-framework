@@ -61,7 +61,7 @@ jobs:
         run: ./mvnw -B -q clean test-compile
 
       - name: Run Smoke Suite
-        run: ./mvnw -B -q "-DsuiteXmlFile=testng-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+        run: ./mvnw -B -q "-DsuiteXmlFile=testng-ui-smoke.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
 
       - name: Generate Allure Report
         if: always()
@@ -150,7 +150,7 @@ jobs:
           echo "--- maven-wrapper.properties ---"; cat .mvn/wrapper/maven-wrapper.properties || true
 
       - name: Run Parallel Regression Suite
-        run: ./mvnw -B -q "-DsuiteXmlFile=testng-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
+        run: ./mvnw -B -q "-DsuiteXmlFile=testng-ui-parallel.xml" "-Dheadless=true" "-Ddemo.pause.ms=0" test
 
       - name: Generate Allure Report
         if: always()

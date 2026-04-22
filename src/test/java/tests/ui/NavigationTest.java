@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -6,6 +9,8 @@ import org.testng.annotations.Test;
 import pages.NavigationPage;
 
 public class NavigationTest extends BaseTest {
+
+  @Severity(SeverityLevel.CRITICAL)
 
   @Test(groups = {"smoke", "regression"})
   public void shouldNavigateBetweenPages() {

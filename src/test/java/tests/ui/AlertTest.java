@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -6,6 +9,8 @@ import org.testng.annotations.Test;
 import pages.AlertsPage;
 
 public class AlertTest extends BaseTest {
+
+  @Severity(SeverityLevel.MINOR)
 
   @Test(groups = {"regression"})
   public void shouldAcceptJsAlert() {
@@ -18,6 +23,8 @@ public class AlertTest extends BaseTest {
     Assert.assertEquals(alertsPage.getResultMessage(), "You successfully clicked an alert");
   }
 
+  @Severity(SeverityLevel.MINOR)
+
   @Test(groups = {"regression"})
   public void shouldDismissJsConfirm() {
     AlertsPage alertsPage = new AlertsPage(driver);
@@ -28,6 +35,8 @@ public class AlertTest extends BaseTest {
     Assert.assertTrue(alertsPage.isResultMessageDisplayed("You clicked: Cancel"));
     Assert.assertEquals(alertsPage.getResultMessage(), "You clicked: Cancel");
   }
+
+  @Severity(SeverityLevel.MINOR)
 
   @Test(groups = {"regression"})
   public void shouldSendTextToJsPrompt() {

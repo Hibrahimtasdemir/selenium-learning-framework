@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import org.testng.Assert;
@@ -7,6 +10,8 @@ import pages.DropdownPage;
 import testdata.TestDataProviders;
 
 public class DropdownTest extends BaseTest {
+
+  @Severity(SeverityLevel.MINOR)
 
   @Test(
       groups = {"smoke", "regression"},

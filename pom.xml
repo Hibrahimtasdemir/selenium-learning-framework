@@ -18,8 +18,8 @@
         <rest.assured.version>5.5.1</rest.assured.version>
         <jackson.version>2.19.2</jackson.version>
         <webdrivermanager.version>6.1.0</webdrivermanager.version>
-        <allure.version>2.25.0</allure.version>
-        <allure.maven.version>2.12.0</allure.maven.version>
+        <allure.version>2.34.0</allure.version>
+        <allure.maven.version>2.17.0</allure.maven.version>
         <slf4j.simple.version>1.7.36</slf4j.simple.version>
         <maven.enforcer.version>3.5.0</maven.enforcer.version>
         <maven.failsafe.version>3.2.5</maven.failsafe.version>
@@ -27,8 +27,8 @@
         <spotbugs.maven.version>4.8.6.6</spotbugs.maven.version>
         <google.java.format.version>1.22.0</google.java.format.version>
         <spotbugs.fail.on.error>false</spotbugs.fail.on.error>
-        <suiteXmlFile>testng.xml</suiteXmlFile>
-        <integrationSuiteXmlFile>testng-smoke.xml</integrationSuiteXmlFile>
+        <suiteXmlFile>testng-ui.xml</suiteXmlFile>
+        <integrationSuiteXmlFile>testng-ui-smoke.xml</integrationSuiteXmlFile>
         <skipITs>true</skipITs>
     </properties>
 
@@ -210,6 +210,48 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>ui</id>
+            <properties>
+                <suiteXmlFile>testng-ui.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>ui-smoke</id>
+            <properties>
+                <suiteXmlFile>testng-ui-smoke.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>ui-parallel</id>
+            <properties>
+                <suiteXmlFile>testng-ui-parallel.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>api</id>
+            <properties>
+                <suiteXmlFile>testng-api.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>api-smoke</id>
+            <properties>
+                <suiteXmlFile>testng-api-smoke.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>api-regression</id>
+            <properties>
+                <suiteXmlFile>testng-api-regression.xml</suiteXmlFile>
+            </properties>
+        </profile>
+
         <profile>
             <id>quality</id>
             <build>

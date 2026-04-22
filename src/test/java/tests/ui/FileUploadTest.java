@@ -1,4 +1,7 @@
-package tests;
+package tests.ui;
+
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
 
 import base.BaseTest;
 import java.nio.file.Path;
@@ -7,6 +10,8 @@ import org.testng.annotations.Test;
 import pages.FileUploadPage;
 
 public class FileUploadTest extends BaseTest {
+
+  @Severity(SeverityLevel.NORMAL)
 
   @Test(groups = {"smoke", "regression"})
   public void shouldUploadFileSuccessfully() {

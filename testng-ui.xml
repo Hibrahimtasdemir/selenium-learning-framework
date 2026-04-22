@@ -4,7 +4,7 @@
         <listener class-name="listeners.TestListener"/>
         <listener class-name="listeners.RetryTransformer"/>
     </listeners>
-    <test name="Regression Tests">
+    <test name="UI Regression Tests">
         <groups>
             <run>
                 <include name="regression"/>
